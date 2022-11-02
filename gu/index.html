@@ -1,0 +1,147 @@
+<html>
+    <head>
+        <title>loginpage</title>
+        <link rel="stylesheet" href="style.css">
+        
+        <body>
+            <div class="hero ">
+                <div class="form-box">
+                    <div class="button-box">
+                        <div id="btn"></div>
+                        <button type="button" class="toggle-btn" onclick="login()">Log In</button>
+                        <button type="button" class="toggle-btn" onclick="register()">Register</button>
+
+                </div>
+                    <div class="social-icons">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                        
+                        
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    </div>
+                    <form id="login" class="input-group" >
+                        <input type="text" class="input-field" placeholder="User Id" id="username" required onkeyup="validateUser()">
+                        <p id="user" style="position:absolute; color:red;  font-size: 10px;"></p>
+                        <input type="password" class="input-field" placeholder="Enter Password" id="password" required onkeyup="validatePassword()">
+                        <p id="pass" style="position:absolute; color:red; font-size: 10px;"></p>
+                        <input type="checkbox" class="chen-box"><span>Remember Password</span>
+                      <a href="home.html">  <button type="submit" class="submit-btn" onclick="validatelogin()">Log In</button> </a>
+
+                    </form>
+                    <form id="register" class="input-group" >
+                        <input type="text" class="input-field" placeholder="User Id" id="username1" required onkeyup="validateUser1()">
+                        <p id="user1" style="position:absolute; color:red;  font-size: 10px;"></p>
+                        <input type="email" class="input-field" placeholder="Email Id" id="email" required onkeyup="validateEmail()" >
+                        <p id="emailId" style="position:absolute; color:red; font-size: 10px;"></p>
+                        <input type="password" class="input-field" placeholder="Enter Password"id="password1"  required onkeyup="validatePassword1()">
+                        <p id="pass1" style="position:absolute; color:red; font-size: 10px;"></p>
+                        <input type="checkbox" class="chen-box"><span>I agree to the terms & condition </span>
+                        <button type="submit" class="submit-btn" onclick="validateregister()">Register</button>
+
+                </div>
+              
+            </div>
+            <script>
+                var x = document.getElementById("login");
+                var y = document.getElementById("register");
+                var z = document.getElementById("btn");
+                 
+                function register()
+                {
+                    x.style.left="-400px";
+                    y.style.left="50px";
+                    z.style.left="110px";
+
+                }
+                  
+                function login()
+                {
+                    x.style.left="50px";
+                    y.style.left="450px";
+                    z.style.left="0px";
+
+                }
+                function validateUser() {
+            var regex = /^[A-Za-z]+$/;
+            var errorName = document.getElementById("user");
+            var name = document.getElementById("username").value;
+            if (!name.match(regex)) {
+                // alert('Please enter your name correctly')
+                errorName.innerHTML = "Enter the name only alphabets..";
+                return false;
+            }
+            errorName.innerHTML = "";
+            return true;
+        }
+        function validatePassword() {
+            var pass = document.getElementById("password").value;
+            var errorPassword = document.getElementById("pass");
+            var passRegex = "^(.{0,4}|[^0-9]|[^A-Z]|[^a-z]|[a-zA-Z0-9]*)$";
+            if (pass.match(passRegex)) 
+            {
+                errorPassword.innerHTML = "Your password must contain atleast 4 characters and one special character and one digit";
+                return false;
+            }
+            errorPassword.innerHTML = "";
+            return true;
+        }
+       function validatelogin(){
+        if(validateUser()&&validatePassword()){
+            window.open("home.html");
+        }
+        else{
+            alert("Enter valid details");
+        }
+       }
+       function validateUser1() {
+            var regex = /^[A-Za-z]+$/;
+            var errorName = document.getElementById("user1");
+            var name = document.getElementById("username1").value;
+            if (!name.match(regex)) {
+                // alert('Please enter your name correctly')
+                errorName.innerHTML = "Enter the name only alphabets..";
+                return false;
+            }
+            errorName.innerHTML = "";
+            return true;
+        }
+        function validatePassword1() {
+            var pass = document.getElementById("password1").value;
+            var errorPassword = document.getElementById("pass1");
+            var passRegex = "^(.{0,4}|[^0-9]|[^A-Z]|[^a-z]|[a-zA-Z0-9]*)$";
+            if (pass.match(passRegex)) 
+            {
+                errorPassword.innerHTML = "Your password must contain atleast 4 characters and one special character and one digit";
+                return false;
+            }
+            errorPassword.innerHTML = "";
+            return true;
+        }
+        function validateEmail(){
+          var emailID=document.getElementById("email").value;
+          var errorEmail=document.getElementById("emailId");
+          var validateCorrect=document.getElementById("correctEmail");
+          var regexEmail=/^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+          if(!emailID.match(regexEmail)){
+            errorEmail.innerHTML="Enter email in only dinesh@gmail.com this format...";
+            validateCorrect.style.color = "red";
+            return false;
+          }
+          errorEmail.innerHTML = "";
+         validateCorrect.style.color = "green";
+            return true;
+       }
+       function validateregister(){
+        if(validatePassword1()&&validateEmail()&&validateUser1()){
+            alert("Register Succesfully");
+        }
+        else{
+            alert("Invalid Details");
+        }
+       }
+            </script>
+        </body>
+    </head>
+</html>
